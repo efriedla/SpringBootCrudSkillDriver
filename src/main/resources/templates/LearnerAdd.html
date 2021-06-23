@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org"
+       xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
+<head>
+    <meta charset = "ISO-8859-1" />
+    <link href = "./css/styles.css" rel = "stylesheet"/>
+    <title>LearnMap Home</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+</head>
+<body>
+<nav th:replace="template :: nav"></nav>
+<!--<div th:replace="template ::  about"></div>-->
+<h2>Edit</h2>
+
+<div class="card" style="width: 18rem;">
+    <form th:action="@{/Student/save}" method="post" th:object="${learner}">
+        <!--        <img class="card-img-top"  th:src="@{${learner.imageUrl}}" alt="Card image cap">-->
+        <div class="card-body">
+
+            <p class="card-text">email:</p>
+                <input type="text" name="email" th:field="*{email}"   />
+            <label>First name</label>
+            <input  type="text" name="name" th:field="*{name}" />
+            <label>last name</label>
+            <!--            <input type="text"  name="lastName" th:field="*{learner.lastName}" th:value = "${learner.lastName}"/>-->
+            <label>username</label>
+            <!--            <input type="text"  name="username" th:field="*{learner.username}" th:value = "${learner.username}"/>-->
+            </p>
+            <button type="save" class="btn btn-success">Save</button>
+            <!--            <p th:text = ${learner.username}"></p>-->
+        </div>
+    </form>
+</div>
+
+
+<footer th:replace="template :: footer"></footer>
+</body>
+</html>

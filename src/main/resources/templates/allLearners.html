@@ -1,0 +1,39 @@
+
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org"
+       xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
+<head>
+    <meta charset = "ISO-8859-1" />
+    <link href = "./css/styles.css" rel = "stylesheet"/>
+    <title>LearnMap Home</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+</head>
+<body>
+<nav th:replace="template :: nav"></nav>
+
+
+<div class="container">
+    <h1>All Learners</h1>
+    <tr th:each="learner: ${learners}">
+        <div class="card" style="width: 18rem;">
+<!--            <img class="card-img-top" th:src="@{${learner.imageUrl}}" alt="Card image cap">-->
+            <div class="card-body">
+                <h3 th:text="${learner.id}"></h3>
+                <p class="card-text"><span th:text = "${learner.email}"></span></p>
+                <li th:text = "${learner.name}"></li>
+<!--                    <span th:text = "${learner.lastName}"></span>-->
+                <a th:href="@{'/Student/' + ${learner.id}}"><button type="submit" class="btn btn-primary">Edit</button></a>
+                <a th:href="@{'/Student/delete/' + ${learner.id}}"><button type="submit" class="btn btn-primary">Delete</button></a>
+
+            </div>
+        </div>
+
+    </tr>
+
+
+
+</div>
+<footer th:replace="template :: footer"></footer>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org"
+       xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
+<head th:fragment="html_header">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <title>LearnMap</title>
+    <!-- Favicon-->
+    <!--    <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />-->
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <link href="../css/styles.css" rel="stylesheet" />
+</head>
+<body>
+<!-- Responsive navbar-->
+<!--<nav th:fragment="nav" class="navbar navbar-expand-lg navbar-dark bg-dark">-->
+<!--    <div class="container">-->
+<!--        <a class="navbar-brand" th:href="@{/}">LearnMap</a>-->
+<!--        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>-->
+<!--        <div class="collapse navbar-collapse" id="navbarSupportedContent">-->
+<!--            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">-->
+<!--                <li class="nav-item"><a class="nav-link active" aria-current="page" th:href="@{/}">Home</a></li>-->
+<!--                <li class="nav-item"><a class="nav-link" th:href="@{/learner/register}">Register New Student</a></li>-->
+<!--                <li class="nav-item"><a class="nav-link" th:href="@{/course/register}">Register To a Course</a></li>-->
+<!--                <li class="nav-item dropdown">-->
+<!--                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Admin</a>-->
+<!--                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">-->
+<!--                        <li><a class="dropdown-item" th:href="@{/learner/allLearners}">Show All Students</a></li>-->
+<!--                        <li><a class="dropdown-item" th:href="@{#}">Show All Courses</a></li>-->
+<!--                        <li><hr class="dropdown-divider" /></li>-->
+<!--                        <li><a class="dropdown-item" th:href="@{./learner/getStudentByEmailForm}">Get Student By Email</a></li>-->
+<!--                        <li><a class="dropdown-item" th:href="@{#}">Get Student Courses</a></li>-->
+<!--                    </ul>-->
+<!--                </li>-->
+<!--            </ul>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</nav>-->
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" th:fragment="nav" >
+    <div class="container">
+        <a class="navbar-brand" th:href="@{/}">LearnMap</a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <div sec:authorize="isAuthenticated()">
+                        <a class="nav-link active" aria-current="page" th:href="@{/}">User: <span sec:authentication="name"></span> Privileges: <span sec:authentication="principal.authorities"></span></a>
+                    </div>
+                    <a class="nav-link active" aria-current="page" th:href="@{/}">User: <span sec:authentication="name"></span> Privileges: <span sec:authentication="principal.authorities"></span></a>
+
+                </li>
+                <li class="nav-item"><a class="nav-link active" aria-current="page" th:href="@{/}">Home</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/Student/add}">Register New Student</a></li>
+                <div sec:authorize="isAuthenticated()">
+                    <li class="nav-item"><a class="nav-link" th:href="@{/courses/registercourse}">Register To a Course</a></li>
+                </div>
+                <li class="nav-item"><a class="nav-link" th:href="@{/login}">Login</a></li>
+
+                <div sec:authorize="isAnonymous()">
+                    <li class="nav-item"><a class="nav-link" th:href="@{/login}">Login</a></li>
+                </div>
+
+                <div sec:authorize="hasRole('ROLE_ADMIN')">
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Admin</a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" th:href="@{/console/allLearners}">Show All Students</a></li>
+                            <li><a class="dropdown-item" th:href="@{#}">Show All Courses</a></li>
+                            <li><hr class="dropdown-divider" /></li>
+                            <li><a class="dropdown-item" th:href="@{/console/getlearnerbyid}">Get Student By Email</a></li>
+                            <li><a class="dropdown-item" th:href="@{#}">Get Student Courses</a></li>
+                        </ul>
+                    </li>
+
+                </div>
+                <div sec:authorize="isAuthenticated()">
+                    <li class="nav-item"><a class="nav-link" th:href="@{/logout}">Logout</a></li>
+                </div>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- Page content-->
+<div th:fragment="about">
+    <div class="container">
+        <div class="text-center mt-5">
+            <h1>LearnMap is a self paced tracking system</h1>
+            <p class="lead">Set goals, set milestones, keep track of resources and tips you learn on the way</p>
+            <p>self pace solo or with a group</p>
+        </div>
+    </div>
+</div>
+
+
+<footer th:fragment="footer">
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="../js/scripts.js"></script>
+</footer>
+</body>
+</html>
