@@ -1,13 +1,16 @@
 package com.example.demo.controllers;
 
+import com.example.demo.models.Course;
+import com.example.demo.models.Course;
 import com.example.demo.services.CourseServices;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @Slf4j
 @Controller
@@ -19,51 +22,49 @@ public class CourseController {
 	public String courseObject(){return ""; }
 
 	@GetMapping("/all")
-	public String allstudents(Model model) {
+	public String allcourses(Model model) {
 	model.addAttribute("courses", courseServices.findAllCourses());
 	return "allCourses";
 }
 
 
-//	@GetMapping("/add")
-//	public String addStudent(Model model){
-//		Student temp = new Student();
-//		model.addAttribute("learner", temp);
-//		return "LearnerAdd";
-//	}
-//
-//	@GetMapping("/{id}")
-//	public String allstudentByID(@PathVariable("id") Long id, Model model) {
-//
-//		Student found = studentservice.findById(id);
-//		model.addAttribute("learner", found);
-//		log.info("in profile "+ found.getName());
-//		return "learnerShow";
-//	}
+	@GetMapping("/add")
+	public String addCourse(Model model){
+		Course temp = new Course();
+		model.addAttribute("course", temp);
+		return "CourseAdd";
+	}
 
-//	@GetMapping("/update/{id}")
-//	public String updateProfile(Model model, @PathVariable Long id){
-//		Student found = studentservice.findById(id);
-//		model.addAttribute("learner", found);
-//		log.info(found.getName());
-//		return "learnerUpdate";
-//	}
+	@GetMapping("/{cId}")
+	public String allcourseByID(@PathVariable("cId") Long cId, Model model) {
+
+		Course found = courseServices.findById(cId);
+		model.addAttribute("course", found);
+		log.info("in course profile "+ found.getCName());
+		return "courseShow";
+	}
+
+	@GetMapping("/update/{cId}")
+	public String updateCourse(Model model, @PathVariable Long cId){
+		Course found = courseServices.findById(cId);
+		model.addAttribute("course", found);
+		log.info(found.getCName());
+		return "courseUpdate";
+	}
 //
-//	@PostMapping("/save")
-//	public String saveUpdate(@ModelAttribute("learner") @Valid Student student,
-//	                         BindingResult result, Model model)
-//	{
-//		studentservice.updateStudent(student);
-//
-//		model.addAttribute("learners", studentservice.findAllStudents());
-//		return "allLearners";
-//
-//	}
-//	@GetMapping("/delete/{id}")
-//	public String deleteStudent(@PathVariable Long id, Model model){
-//
-//		studentservice.deleteStudent(id);
-//		model.addAttribute("learners", studentservice.findAllStudents());
-//		return "allLearners";
-//	}
+	@PostMapping("/save")
+	public String saveUpdate(@ModelAttribute("course") @Valid Course course,
+	                         BindingResult result, Model model) {
+		courseServices.updateCourse(course);
+
+		model.addAttribute("courses", courseServices.findAllCourses());
+		return "allCourses";
+	}
+	@GetMapping("/delete/{cId}")
+	public String deleteCourse(@PathVariable Long cId, Model model){
+
+		courseServices.deleteCourse(cId);
+		model.addAttribute("courses", courseServices.findAllCourses());
+		return "allCourses";
+	}
 }
