@@ -16,19 +16,17 @@
     <h1>All Courses</h1>
     <tr th:each="course: ${courses}">
         <div class="card" style="width: 18rem;">
-            <!--            <img class="card-img-top" th:src="@{${learner.imageUrl}}" alt="Card image cap">-->
             <div class="card-body">
                 <h3 th:text="${course.cId}"></h3>
                 <p class="card-text"><span th:text = "${course.cName}"></span></p>
                 <li th:text = "${course.cUsedFor}"></li>
-                <!--                    <span th:text = "${learner.lastName}"></span>-->
                 <a th:href="@{'/Course/' + ${course.cId}}"><button type="submit" class="btn btn-primary">Edit</button></a>
                 <a th:href="@{'/Course/delete/' + ${course.cId}}"><button type="submit" class="btn btn-primary">Delete</button></a>
 
             </div>
         </div>
 
-    </tr>
+
 
 
 
