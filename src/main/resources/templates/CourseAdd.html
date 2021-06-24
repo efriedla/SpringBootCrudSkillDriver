@@ -10,10 +10,10 @@
 </head>
 <body>
 <nav th:replace="template :: nav1"></nav>
-<div class="container">
-    <h2>Edit</h2>
+<div class="container" style="margin-top: 50px">
+    <h2 class=" d-flex justify-content-center">Edit</h2>
 
-    <div class="card" style="width: 18rem;">
+    <div class="card" style="width: 18rem; margin:auto; margin-top:50px;">
         <form th:action="@{/Course/save}" method="post" th:object="${course}">
             <div class="card-body">
 
