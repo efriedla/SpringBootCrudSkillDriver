@@ -8,6 +8,7 @@ import lombok.experimental.FieldDefaults;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @Entity
@@ -23,4 +24,16 @@ public class Course {
 	Long cId;
 	String cName;
 	String cUsedFor;
+
+	public Course(Long cId, String cName, String cUsedFor) {
+		this.cId = cId;
+		this.cName = cName;
+		this.cUsedFor = cUsedFor;
+	}
+
+	//joining students
+	@ManyToMany(mappedBy = "courses")
+	List<Student> students;
+
+
 }

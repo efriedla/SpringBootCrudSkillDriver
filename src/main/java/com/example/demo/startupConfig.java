@@ -29,13 +29,18 @@ public class startupConfig implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		log.info("**** Start adding Learners sql statements ****");
-		studentRepo.save(new Student(1L, "bob","thisEmail@gmail.com","pass1" ));
-		studentRepo.save(new Student(2L, "Tom","thisEmailTom@gmail.com","pass2"  ));
-		studentRepo.save(new Student(3L, "work","thisAEmail@gmail.com","pass3"  ));
 		log.info("****** start adding courses");
 		courseRepo.save((new Course(1L,"Java", "Development")));
 		courseRepo.save((new Course(2L,"Spring-Boot", "Development Java web")));
+
+		log.info("**** Start adding Learners sql statements ****");
+		studentRepo.save(new Student(1L, "bob","thisEmail@gmail.com","pass1"));
+		studentRepo.save(new Student(2L, "Tom","thisEmailTom@gmail.com","pass2", courseRepo.findAll() ));
+		studentRepo.save(new Student(3L, "work","thisAEmail@gmail.com","pass3"  ));
+
+		log.info("added some courses to students");
+		studentRepo.findByid(1L).setCourses( courseRepo.findAll());
+
 
 	}
 	@PostConstruct

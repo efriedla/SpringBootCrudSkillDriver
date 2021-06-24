@@ -8,6 +8,7 @@ import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @Entity
@@ -24,5 +25,23 @@ public class Student {
 	String name;
 	String email;
 	String password;
+
+	public Student(Long id, String name, String email, String password) {
+		this.id = id;
+		this.name = name;
+		this.email = email;
+		this.password = password;
+	}
+
+	@ManyToMany
+	@JoinTable
+			(
+					name= "student_course",
+					joinColumns=@JoinColumn(name = "id"),
+					inverseJoinColumns=@JoinColumn( name = "cId")
+			)
+	@ToString.Exclude
+	List<Course> courses;
+
 
 }
