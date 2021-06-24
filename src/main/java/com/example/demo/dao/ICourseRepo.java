@@ -9,4 +9,5 @@ public interface ICourseRepo extends JpaRepository<Course, Long> {
 	Course findBycId(Long cId);
 
 
+
 }
