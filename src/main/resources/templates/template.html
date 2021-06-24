@@ -58,7 +58,7 @@
                 <li class="nav-item"><a class="nav-link active" aria-current="page" th:href="@{/}">Home</a></li>
                 <li class="nav-item"><a class="nav-link" th:href="@{/Student/add}">Register New Student</a></li>
                 <div sec:authorize="isAuthenticated()">
-                    <li class="nav-item"><a class="nav-link" th:href="@{/courses/registercourse}">Register To a Course</a></li>
+                    <li class="nav-item"><a class="nav-link" th:href="@{/Course/add}">Register To a Course</a></li>
                 </div>
                 <li class="nav-item"><a class="nav-link" th:href="@{/login}">Login</a></li>
 
@@ -71,8 +71,8 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Admin</a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" th:href="@{/console/allLearners}">Show All Students</a></li>
-                            <li><a class="dropdown-item" th:href="@{#}">Show All Courses</a></li>
+                            <li><a class="dropdown-item" th:href="@{/Student/all}">Show All Students</a></li>
+                            <li><a class="dropdown-item" th:href="@{/Course/all}">Show All Courses</a></li>
                             <li><hr class="dropdown-divider" /></li>
                             <li><a class="dropdown-item" th:href="@{/console/getlearnerbyid}">Get Student By Email</a></li>
                             <li><a class="dropdown-item" th:href="@{#}">Get Student Courses</a></li>
