@@ -1,8 +1,10 @@
 package com.example.demo.controllers;
 
 import com.example.demo.models.Student;
+import com.example.demo.services.CourseServices;
 import com.example.demo.services.StudentServices;
 import lombok.extern.java.Log;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,12 +13,15 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
-@Log
+@Slf4j
 @Controller
 @RequestMapping(value="/Student")
 public class MainController {
 	@Autowired
 	private StudentServices studentservice;
+
+	@Autowired
+	private CourseServices courseServices;
 
 	// creates student object that can remeber what was entered for sessions
 	@ModelAttribute("studentObject")
@@ -24,10 +29,9 @@ public class MainController {
 		return "";
 	}
 
-//	@PostMapping("save-student")
-//	public boolean saveStudent(@RequestBody Student student) {
-//		return studentservice.saveStudent(student);
-//	}
+	//course
+	@ModelAttribute("courseObject")
+	public String courseObject(){return ""; }
 
 	@GetMapping("all")
 	public String allstudents(Model model) {
@@ -35,11 +39,6 @@ public class MainController {
 		return "allLearners";
 	}
 
-//	@DeleteMapping("delete-student/{student_id}")
-//	public boolean deleteStudent(@PathVariable("student_id") int student_id,Student student) {
-//		student.setStudent_id(student_id);
-//		return studentservice.deleteStudent(student);
-//	}
 
 	@GetMapping("/add")
 	public String addStudent(Model model){
@@ -68,7 +67,6 @@ public class MainController {
 	@PostMapping("/save")
 	public String saveUpdate(@ModelAttribute("learner") @Valid Student student,
 	                         BindingResult result, Model model)
-//			, @RequestParam("id") Long id)
 	{
 		studentservice.updateStudent(student);
 
@@ -84,9 +82,8 @@ public class MainController {
 		return "allLearners";
 	}
 
-//	@PostMapping("update-student/{student_id}")
-//	public boolean updateStudent(@RequestBody Student student,@PathVariable("student_id") int student_id) {
-//		student.setStudent_id(student_id);
-//		return studentservice.updateStudent(student);
-//	}
+//	----------------end student start corse---------------------------
+
+
+
 }
