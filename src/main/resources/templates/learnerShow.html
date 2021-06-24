@@ -10,22 +10,20 @@
 </head>
 <body>
 <nav th:replace="template :: nav1"></nav>
-<!--<div th:replace="template ::  about"></div>-->
-<h2>Getting started</h2>
-<p>Learner Home</p>
-<div>
+<div class="container">
+    <p>Student Show</p>
+    <div>
 
-    <div class="card" style="width: 18rem;">
-<!--        <img class="card-img-top" th:src="@{${learner.imageUrl}}" alt="Card image cap">-->
-        <div class="card-body">
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
 
-            <li th:text = "${learner.name}"></li>
-            <li th:text = "${learner.email}"></li>
+                <li th:text = "${learner.name}"></li>
+                <li th:text = "${learner.email}"></li>
 
 
-            <a th:href="@{'/Student/update/' + ${learner.id}}"><button type="submit" class="btn btn-primary">Edit</button></a>
+                <a th:href="@{'/Student/update/' + ${learner.id}}"><button type="submit" class="btn btn-primary">Edit</button></a>
+            </div>
         </div>
-    </div>
 
 </div>
 <footer th:replace="template :: footer"></footer>

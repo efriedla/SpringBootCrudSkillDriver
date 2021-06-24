@@ -10,34 +10,29 @@
 </head>
 <body>
 <nav th:replace="template :: nav1"></nav>
-<!--<div th:replace="template ::  about"></div>-->
-<h2>Edit</h2>
+<div class="container">
+    <h2>Edit</h2>
 
-<div class="card" style="width: 18rem;">
-    <form th:action="@{/Student/save}" method="post">
-<!--        <img class="card-img-top"  th:src="@{${learner.imageUrl}}" alt="Card image cap">-->
-        <div class="card-body">
+    <div class="card" style="width: 18rem;">
+        <form th:action="@{/Student/save}" method="post">
+            <div class="card-body">
 
-            <p class="card-text">email: <input type="hidden" name="id" th:field="*{learner.id}"  th:value = "${learner.id}" />
-                <input type="text" name="email" th:field="*{learner.email}"  th:value = "${learner.email}" /></p>
-            <label>First name</label>
-            <input  type="text" name="name" th:field="*{learner.name}" th:value = "${learner.name}"/>
-            <label>last name</label>
-<!--            <input type="text"  name="lastName" th:field="*{learner.lastName}" th:value = "${learner.lastName}"/>-->
-            <label>username</label>
-<!--            <input type="text"  name="username" th:field="*{learner.username}" th:value = "${learner.username}"/>-->
-            </p>
-           <button type="save" class="btn btn-success">Save</button>
-                <!--            <p th:text = ${learner.username}"></p>-->
-        </div>
-    </form>
-</div>
+                <p class="card-text">email: <input type="hidden" name="id" th:field="*{learner.id}"  th:value = "${learner.id}" />
+                    <input type="text" name="email" th:field="*{learner.email}"  th:value = "${learner.email}" /></p>
+                <label>First name</label>
+                <input  type="text" name="name" th:field="*{learner.name}" th:value = "${learner.name}"/>
+                <label>last name</label>
+                <label>username</label>
+                </p>
+               <button type="save" class="btn btn-success">Save</button>
+            </div>
+        </form>
+    </div>
 <div>
 
 
 
 
-</div>
 <footer th:replace="template :: footer"></footer>
 </body>
 </html>
