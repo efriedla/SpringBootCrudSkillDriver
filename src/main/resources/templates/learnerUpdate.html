@@ -16,19 +16,19 @@
     <div class="card" style="width: 18rem; margin:auto; margin-top:50px;">
         <form th:action="@{/Student/save}" method="post">
             <div class="card-body">
-
-                <p class="card-text">email: <input type="hidden" name="id" th:field="*{learner.id}"  th:value = "${learner.id}" />
+                <p class="card-text">Email: <input type="hidden" name="id" th:field="*{learner.id}"  th:value = "${learner.id}" />
                     <input type="text" name="email" th:field="*{learner.email}"  th:value = "${learner.email}" /></p>
-                <label>First name</label>
+                <p>Name</p>
                 <input  type="text" name="name" th:field="*{learner.name}" th:value = "${learner.name}"/>
-                <label>last name</label>
-                <label>username</label>
+                <p>Password</p>
+                <input  type="text" name="password" th:field="*{learner.password}" th:value = "${learner.password}"/>
+
                 </p>
                <button type="save" class="btn btn-success">Save</button>
             </div>
         </form>
     </div>
-<div>
+</div>
 
 
 

@@ -17,12 +17,11 @@
         <form th:action="@{/Course/save}" method="post">
             <div class="card-body">
 
-                <p class="card-text">email: <input type="hidden" name="id" th:field="*{course.cId}"  th:value = "${course.cId}" />
-                    <input type="text" name="email" th:field="*{course.cName}"  th:value = "${course.cName}" /></p>
-                <label>First name</label>
-                <input  type="text" name="name" th:field="*{course.cUsedFor}" th:value = "${course.cUsedFor}"/>
-                <label>last name</label>
-                <label>username</label>
+                <p class="card-text">Course Name: <input type="hidden" name="id" th:field="*{course.cId}"  th:value = "${course.cId}" />
+                    <input type="text" name="name" th:field="*{course.cName}"  th:value = "${course.cName}" /></p>
+                <label>Course Purpose: </label>
+                <input  type="text" name="cUsedFor" th:field="*{course.cUsedFor}" th:value = "${course.cUsedFor}"/>
+
                 </p>
                 <button type="save" class="btn btn-success">Save</button>
             </div>
