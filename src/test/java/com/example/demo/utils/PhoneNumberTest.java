@@ -19,39 +19,6 @@ public class PhoneNumberTest {
 		underTest = new PhoneNumberValidator();
 	}
 
-	@Test
-	@DisplayName("Phone Should not be letters")
-	void itShouldNotValidatePhoneNumber(){
-		//Given
-		String phoneNumber = "asbkj";
-		//When
-		boolean isValid =  underTest.test(phoneNumber);
-		//Then
-		assertThat(isValid).isFalse();
-	}
-
-	@Test
-	@DisplayName("Ultimate test for phoneNumbers")
-	void itShouldValidatePhoneNumber(){
-		//Given
-		String phoneNumber = "1-234-567-8901";
-		//When
-		boolean isValid =  underTest.test(phoneNumber);
-		//Then
-		assertThat(isValid).isTrue();
-	}
-
-
-
-	// matches
-	// "1-234-567-8901",
-	//"1-234-567-8901 x1234",
-	//"1-234-567-8901 ext1234",
-	//"1 (234) 567-8901",
-	//"1.234.567.8901",
-	//"1/234/567/8901",
-	//"12345678901",
-	//"not a phone number"
 	@ParameterizedTest
 	@CsvSource({
 			"1-234-567-8901,true",
@@ -59,6 +26,7 @@ public class PhoneNumberTest {
 			"1-234-567-8901 ext1234,true",
 			"1-123-1,false",
 			"1 (234) 567-8901,true",
+			"abksdfj,false",
 			"1.234.567.8901,true",
 			"1/234/567/8901,true",
 			"12345678901,true",
