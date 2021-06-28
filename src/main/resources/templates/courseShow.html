@@ -20,7 +20,7 @@
                 <li><span>Course Name: </span><span th:text = "${course.cName}"></span></li>
                 <li><span>Course Perpose: </span><span th:text = "${course.cUsedFor}"></span></li>
 
-
+                <br>
                 <a th:href="@{'/Course/update/' + ${course.cId}}"><button type="submit" class="btn btn-primary">Edit</button></a>
             </div>
         </div>

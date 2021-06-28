@@ -34,9 +34,9 @@ public class startupConfig implements CommandLineRunner {
 		courseRepo.save((new Course(2L,"Spring-Boot", "Development Java web")));
 
 		log.info("**** Start adding Learners sql statements ****");
-		studentRepo.save(new Student(1L, "bob","thisEmail@gmail.com","pass1"));
-		studentRepo.save(new Student(2L, "Tom","thisEmailTom@gmail.com","pass2", courseRepo.findAll() ));
-		studentRepo.save(new Student(3L, "work","thisAEmail@gmail.com","pass3"  ));
+		studentRepo.save(new Student(1L, "bob","thisEmail@gmail.com","pass1", "301-123-9876"));
+		studentRepo.save(new Student(2L, "Tom","thisEmailTom@gmail.com","pass2", "301-555-9876", courseRepo.findAll() ));
+		studentRepo.save(new Student(3L, "work","thisAEmail@gmail.com","pass3","301-555-5555"  ));
 
 		log.info("added some courses to students");
 		studentRepo.findByid(1L).setCourses( courseRepo.findAll());
